@@ -157,7 +157,8 @@ function cms_page(instance)
 						+"&curi="+window.location.toString();
 		
 		CMS_INSTANCE.ajax("lite/cms.php", function(){
-			window.location.href = CMS_INSTANCE.BASE_URI + CMS_INSTANCE.newpage + "?edit_mode=" + CMS_INSTANCE.authenticated;
+			if(response.duplicated == true)
+				window.location.href = CMS_INSTANCE.BASE_URI + CMS_INSTANCE.newpage + "?edit_mode=" + CMS_INSTANCE.authenticated;
 		}, postData);
 		
 		return true;
