@@ -17,7 +17,6 @@ function cms_page(instance)
 		CMS_INSTANCE.JSONCode=document.createElement("script");
 		CMS_INSTANCE.JSONCode.setAttribute("type","text/javascript");
 		document.getElementsByTagName("head")[0].appendChild(CMS_INSTANCE.JSONCode);
-		CMS_INSTANCE.JSONCode.id = "cms_response_" + Math.random();
 		
 		x=this.ActiveXObject;
 		x=new(x?x:XMLHttpRequest)('Microsoft.XMLHTTP');
@@ -46,7 +45,7 @@ function cms_page(instance)
 		if(location.indexOf("edit_mode") != -1)
 		{
 			CMS_INSTANCE.ajax("lite/cms.php", function(){
-				if(response != undefined && response.authenticated != "true")
+				if(typeof response != undefined && response.authenticated != "false")
 				{
 					CMS_INSTANCE.authenticated = response.authenticated;
 					CMS_INSTANCE.create_UI();
